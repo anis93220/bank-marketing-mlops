@@ -30,3 +30,10 @@ def test_meme_calcul_entrainement_et_prediction():
     client = df.iloc[0].drop(["duration", "y"]).to_dict()
     prediction = build_features(pd.DataFrame([client]))
     pd.testing.assert_frame_equal(entrainement, prediction)
+
+
+def test_client_marie():
+    df = load_bank_data()
+    features = build_features(df)
+    attendu = (df["marital"] == "married").astype(int)
+    assert features["client_marie"].equals(attendu)

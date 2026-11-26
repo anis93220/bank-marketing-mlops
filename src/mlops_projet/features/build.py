@@ -23,6 +23,7 @@ def build_features(df):
         bins=[17, 29, 45, 60, 100],
         labels=["18-29", "30-45", "46-60", "61+"],
     ).astype(str)
+    features["client_marie"] = (df["marital"] == "married").astype(int)
     return features
 
 
